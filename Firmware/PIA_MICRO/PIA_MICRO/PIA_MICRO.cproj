@@ -120,6 +120,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BUTTON\BUTTON.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BUTTON\BUTTON.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -132,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DISPLAY_7SEG_MUX" />
+    <Folder Include="BUTTON" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
