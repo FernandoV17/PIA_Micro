@@ -28,5 +28,6 @@
 void init_display_mux(void);
 void timer1_init(void);
 void update_display(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4);
+void display_show_HI(void);
 
 #endif /* DISPLAY_7SEG_MUX_H_ */

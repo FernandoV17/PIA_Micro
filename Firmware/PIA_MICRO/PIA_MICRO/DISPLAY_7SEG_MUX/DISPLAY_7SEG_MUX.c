@@ -33,11 +33,11 @@ const uint8_t segment_map[] = {
 	0b11111010, // 6  A   C D E F G
 	0b00001110, // 7  A B C
 	0b11111110, // 8  A B C D E F G
-	0b11011110  // 9  A B C D   F G
+	0b11011110,  // 9  A B C D   F G
+    0b10000000, // -              G
+    0b11101100, // H    B C   E F G
+    0b00001100  // I    B C
 };
-
-
-
 
 volatile uint8_t display_buffer[4] = {0};
 volatile uint8_t current_digit = 0;
@@ -58,20 +58,32 @@ void update_display(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4) {
 	display_buffer[3] = d4;
 }
 
+void display_show_HI(void) {
+	display_mux_PORTX |= (1 << DIG1) | (1 << DIG2) | (1 << DIG3) | (1 << DIG4);
+	
+	display_7SEG_PORTX = 0x00;
+	
+	_delay_ms(2);
+	
+	display_buffer[0] = 10;  
+	display_buffer[1] = 11;  
+	display_buffer[2] = 12;  
+	display_buffer[3] = 10;  
+}
 
 ISR(TIMER1_COMPA_vect) {
-	// 1. Apagar todos los dígitos (poner en LOW los pines del mux)
-	display_mux_PORTX &= ~((1 << DIG1) | (1 << DIG2) | (1 << DIG3) | (1 << DIG4));
+	// 1. Apagar todos los dígitos (poner en HIGH)
+	display_mux_PORTX |= (1 << DIG1) | (1 << DIG2) | (1 << DIG3) | (1 << DIG4);
 	
-	// 2. Preparar segmentos para el dígito actual
+	// 2. Preparar segmentos (HIGH para encender en cátodo común)
 	display_7SEG_PORTX = segment_map[display_buffer[current_digit]];
 	
-	// 3. Activar solo el dígito actual (HIGH en el pin del mux correspondiente)
+	// 3. Activar solo el dígito actual (LOW en el pin del mux)
 	switch(current_digit) {
-		case 0: display_mux_PORTX |= (1 << DIG1); break;
-		case 1: display_mux_PORTX |= (1 << DIG2); break;
-		case 2: display_mux_PORTX |= (1 << DIG3); break;
-		case 3: display_mux_PORTX |= (1 << DIG4); break;
+		case 0: display_mux_PORTX &= ~(1 << DIG1); break;
+		case 1: display_mux_PORTX &= ~(1 << DIG2); break;
+		case 2: display_mux_PORTX &= ~(1 << DIG3); break;
+		case 3: display_mux_PORTX &= ~(1 << DIG4); break;
 	}
 	
 	// 4. Rotar al siguiente dígito
