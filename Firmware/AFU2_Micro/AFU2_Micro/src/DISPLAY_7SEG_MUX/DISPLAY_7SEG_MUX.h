@@ -1,7 +1,7 @@
 /*
  * DISPLAY_7SEG_MUX.h
  *
- * Created: 17/05/2025 03:33:11 p. m.
+ * Created: 15/04/2025 11:09:32 a. m.
  *  Author: fervi
  */ 
 
@@ -28,6 +28,5 @@
 void init_display_mux(void);
 void timer1_init(void);
 void update_display(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4);
-void display_show_HI(void);
 
 #endif /* DISPLAY_7SEG_MUX_H_ */

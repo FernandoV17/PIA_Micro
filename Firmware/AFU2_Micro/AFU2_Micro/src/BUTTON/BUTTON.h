@@ -13,13 +13,11 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define BUTTON1_PIN PB0
-#define BUTTON2_PIN PB1
-#define BUTTON3_PIN PB2
+#define BUTTON1_PIN PB1
+#define BUTTON2_PIN PB2
 
 #define BUTTON1_MASK (1 << BUTTON1_PIN)
 #define BUTTON2_MASK (1 << BUTTON2_PIN)
-#define BUTTON3_MASK (1 << BUTTON3_PIN)
 
 #define BUTTONS_READ (PINB & (BUTTON1_MASK | BUTTON2_MASK))
 
@@ -27,7 +25,6 @@
 void buttons_init(void);
 uint8_t button1_pressed(void);
 uint8_t button2_pressed(void);
-uint8_t button3_pressed(void);
 void buttons_update(void);
 
-#endif 
+#endif // BUTTONS_H

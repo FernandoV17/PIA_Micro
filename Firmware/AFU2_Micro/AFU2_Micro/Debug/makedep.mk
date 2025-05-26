@@ -2,9 +2,7 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-BUTTON\BUTTON.c
+src\DISPLAY_7SEG_MUX\DISPLAY_7SEG_MUX.c
 
-main.c
-
-DISPLAY_7SEG_MUX\DISPLAY_7SEG_MUX.c
+src\main.c
 
