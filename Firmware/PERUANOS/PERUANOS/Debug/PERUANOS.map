@@ -14,8 +14,6 @@ Discarded input sections
  .text          0x00000000        0x0 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
  .data          0x00000000        0x0 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
  .bss           0x00000000        0x0 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
- .text.timer0_init
-                0x00000000       0x12 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -195,7 +193,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x268
+.text           0x00000000      0x260
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -290,23 +288,26 @@ END GROUP
  .text.__vector_11
                 0x000000da       0x8e DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
                 0x000000da                __vector_11
- .text.setup    0x00000168       0x64 main.o
-                0x00000168                setup
+ .text.timer0_init
+                0x00000168       0x12 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
+                0x00000168                timer0_init
+ .text.setup    0x0000017a       0x46 main.o
+                0x0000017a                setup
  .text.read_pot
-                0x000001cc       0x1c main.o
-                0x000001cc                read_pot
+                0x000001c0       0x1c main.o
+                0x000001c0                read_pot
  .text.control_outputs
-                0x000001e8       0x3e main.o
-                0x000001e8                control_outputs
- .text.loop     0x00000226        0x6 main.o
-                0x00000226                loop
- .text.main     0x0000022c       0x38 main.o
-                0x0000022c                main
-                0x00000264                . = ALIGN (0x2)
+                0x000001dc       0x42 main.o
+                0x000001dc                control_outputs
+ .text.loop     0x0000021e        0x6 main.o
+                0x0000021e                loop
+ .text.main     0x00000224       0x38 main.o
+                0x00000224                main
+                0x0000025c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000264        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000264                _exit
-                0x00000264                exit
+ .fini9         0x0000025c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000025c                _exit
+                0x0000025c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -325,11 +326,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000264        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000025c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000268                _etext = .
+                0x00000260                _etext = .
 
-.data           0x00800100       0x10 load address 0x00000268
+.data           0x00800100       0x10 load address 0x00000260
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -357,8 +358,8 @@ END GROUP
                 0x00800111                display_buffer
  *(COMMON)
                 0x00800115                PROVIDE (__bss_end, .)
-                0x00000268                __data_load_start = LOADADDR (.data)
-                0x00000278                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000260                __data_load_start = LOADADDR (.data)
+                0x00000270                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800115        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -440,11 +441,11 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xa88
+.debug_info     0x00000000      0xa4f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x1eb DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
- .debug_info    0x000007df      0x2a9 main.o
+ .debug_info    0x000007df      0x270 main.o
 
 .debug_abbrev   0x00000000      0x804
  *(.debug_abbrev)
@@ -452,29 +453,29 @@ END GROUP
  .debug_abbrev  0x000005a2      0x129 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
  .debug_abbrev  0x000006cb      0x139 main.o
 
-.debug_line     0x00000000      0x532
+.debug_line     0x00000000      0x51a
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x1de DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
- .debug_line    0x00000312      0x220 main.o
+ .debug_line    0x00000312      0x208 main.o
 
 .debug_frame    0x00000000       0xd8
  *(.debug_frame)
  .debug_frame   0x00000000       0x74 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
  .debug_frame   0x00000074       0x64 main.o
 
-.debug_str      0x00000000      0x46b
+.debug_str      0x00000000      0x45f
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x20f DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
                                 0x243 (size before relaxing)
- .debug_str     0x00000417       0x54 main.o
+ .debug_str     0x00000417       0x48 main.o
                                 0x226 (size before relaxing)
 
-.debug_loc      0x00000000      0x199
+.debug_loc      0x00000000      0x151
  *(.debug_loc)
  .debug_loc     0x00000000       0xa9 DISPLAY_7SEG_MUX/DISPLAY_7SEG_MUX.o
- .debug_loc     0x000000a9       0xf0 main.o
+ .debug_loc     0x000000a9       0xa8 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
